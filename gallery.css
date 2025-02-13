@@ -63,19 +63,21 @@ header {
 
 /* General Button Styles */
 .button {
-    display: inline-block;
-    padding: 12px 25px;
-    font-size: 18px;
-    font-weight: bold;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
     text-align: center;
-}
-
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .button-container {
+    text-align: center;
+  }
+  
 /* Read My Letter Button */
 .read-letter {
     background: #fff;
@@ -86,7 +88,6 @@ header {
 
 .read-letter:hover {
     background: #ffafbd;
-    transform: scale(1.05);
     box-shadow: 0px 6px 15px rgba(255, 117, 143, 0.8);
 }
 
@@ -115,6 +116,7 @@ header {
     .button {
         font-size: 16px;
         padding: 10px 20px;
+        margin-top: 15px;
     }
 }
 
@@ -172,17 +174,70 @@ footer {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
+
+@media (max-width: 1200px) {
+    .gallery-container {
+      width: 80%;
+    }
     .carousel {
-        height: 280px;
+      max-width: 400px;
     }
-
+  }
+  
+  @media (max-width: 992px) {
+    .gallery-container {
+      width: 90%;
+    }
+    .carousel {
+      max-width: 300px;
+      height: 250px;
+    }
     .prev, .next {
-        font-size: 18px;
-        padding: 10px 14px;
+      font-size: 16px;
+      padding: 8px 12px;
     }
-
+  }
+  
+  @media (max-width: 768px) {
+    .carousel {
+      height: 280px;
+    }
+    .prev, .next {
+      font-size: 18px;
+      padding: 10px 14px;
+    }
     footer {
-        font-size: 16px;
+      font-size: 16px;
     }
-}
+  }
+  
+  @media (max-width: 576px) {
+    .gallery-container {
+      width: 95%;
+    }
+    .carousel {
+      max-width: 250px;
+      height: 200px;
+    }
+    .prev, .next {
+      font-size: 14px;
+      padding: 6px 10px;
+    }
+    footer {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .carousel {
+      max-width: 200px;
+      height: 150px;
+    }
+    .prev, .next {
+      font-size: 12px;
+      padding: 4px 8px;
+    }
+    footer {
+      font-size: 12px;
+    }
+  }

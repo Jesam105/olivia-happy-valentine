@@ -11,19 +11,21 @@
 <body>
 
     <!-- Background Music -->
-    <audio id="bg-music" autoplay loop>
+    <audio id="bg-music" loop>
         <source src="Helplessly.mp3" type="audio/mpeg">
         Your browser does not support the audio tag.
     </audio>
+
 
     <header>
         <h1>Our Precious Moments 💕</h1>
         <p>A collection of our happiest memories together</p>
         <div class="button-container">
-            <a href="letter.html" class="button read-letter">Read My Letter to You❤️</a>
+          <button id="play-button" class="button">Play Music</button>
+          <a href="letter.html" class="button read-letter">Read My Letter to You❤</a>
         </div>
-
-    </header>
+      </header>
+      
 
     <!-- Carousel Container -->
     <div class="carousel">
@@ -88,7 +90,7 @@
 
     <script>
 
-document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             let audio = document.getElementById('bg-music');
 
             // Play music when user interacts with the page (fix for autoplay restrictions)
@@ -98,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             });
         });
-        
+
         let slideIndex = 0;
         const slides = document.querySelectorAll('.carousel-slide');
 
@@ -141,13 +143,13 @@ document.addEventListener('DOMContentLoaded', function () {
         // Auto Slide (Optional)
         setInterval(nextSlide, 5000); // Change slide every 5 seconds
 
-        // Autoplay fix for background music
-        let audio = document.getElementById('bg-music');
-        document.body.addEventListener('click', function () {
-            if (audio.paused) {
-                audio.play().catch(error => console.log('Autoplay blocked:', error));
-            }
+        const playButton = document.getElementById('play-button');
+        const audio = document.getElementById('bg-music');
+
+        playButton.addEventListener('click', () => {
+            audio.play();
         });
+
 
         showSlide(slideIndex);
     </script>
