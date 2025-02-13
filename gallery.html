@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Memories ❤️</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+
+<body>
+
+    <!-- Background Music -->
+    <audio id="bg-music" autoplay loop>
+        <source src="Helplessly.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <header>
+        <h1>Our Precious Moments 💕</h1>
+        <p>A collection of our happiest memories together</p>
+        <div class="button-container">
+            <a href="letter.html" class="button read-letter">Read My Letter to You❤️</a>
+        </div>
+
+    </header>
+
+    <!-- Carousel Container -->
+    <div class="carousel">
+        <!-- <button class="prev" onclick="prevSlide()">&#10094;</button> -->
+
+        <div class="carousel-content">
+            <div class="carousel-slide">
+                <img src="IMG_3113.jpeg" alt="Our Memory 1">
+            </div>
+            <div class="carousel-slide">
+                <video autoplay muted loop>
+                    <source src="79A22A2A-FCC5-4870-8814-8E87B23B9DD6.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3118.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <video autoplay muted loop>
+                    <source src="DDFC4CE3-A582-44F7-89BA-8EE802495516.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3145.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <video autoplay muted loop>
+                    <source src="filtered-56D80C58-88B3-4E5C-8B5C-B28AC6336997.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3149.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3156.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3605.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3758.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3762.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3766.jpeg" alt="Our Memory 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="IMG_3767.jpeg" alt="Our Memory 2">
+            </div>
+        </div>
+
+        <!-- <button class="next" onclick="nextSlide()">&#10095;</button> -->
+    </div>
+
+    <footer>
+        <div class="button-container">
+            <a href="index.html" class="button back-button">Back</a>
+        </div>
+    </footer>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', function () {
+            let audio = document.getElementById('bg-music');
+
+            // Play music when user interacts with the page (fix for autoplay restrictions)
+            document.body.addEventListener('click', function () {
+                if (audio.paused) {
+                    audio.play().catch(error => console.log('Autoplay blocked:', error));
+                }
+            });
+        });
+        
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+
+        function showSlide(index) {
+            if (index >= slides.length) {
+                slideIndex = 0;
+            } else if (index < 0) {
+                slideIndex = slides.length - 1;
+            } else {
+                slideIndex = index;
+            }
+            document.querySelector('.carousel-content').style.transform = `translateX(${-slideIndex * 100}%)`;
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(slideIndex - 1);
+        }
+
+        // Swipe Support for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.carousel-content').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.carousel-content').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 50) {
+                nextSlide();
+            } else if (touchStartX - touchEndX < -50) {
+                prevSlide();
+            }
+        });
+
+        // Auto Slide (Optional)
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+        // Autoplay fix for background music
+        let audio = document.getElementById('bg-music');
+        document.body.addEventListener('click', function () {
+            if (audio.paused) {
+                audio.play().catch(error => console.log('Autoplay blocked:', error));
+            }
+        });
+
+        showSlide(slideIndex);
+    </script>
+
+</body>
+
+</html>
